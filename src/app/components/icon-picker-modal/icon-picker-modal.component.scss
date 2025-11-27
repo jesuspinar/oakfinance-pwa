@@ -3,22 +3,7 @@
 // Modern dark theme icon grid design
 // =============================================================================
 
-// Color variables
-$oak-green: #5CB299;
-$oak-bg-dark: #1A1A1A;
-$oak-bg-card: #252525;
-$oak-bg-input: #333333;
-$oak-text-primary: #FFFFFF;
-$oak-text-secondary: #B3B3B3;
-$oak-text-muted: #808080;
-
-// Spacing
-$spacing-xs: 4px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-
-// Border radius
-$radius-md: 12px;
+@import "theme/colors";
 
 ion-grid {
   padding: $spacing-md;

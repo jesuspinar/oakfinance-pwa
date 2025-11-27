@@ -3,10 +3,7 @@
 // Modern dark theme tab bar
 // =============================================================================
 
-// Color variables
-$oak-green: #5CB299;
-$oak-bg-card: #252525;
-$oak-text-muted: #808080;
+@import "theme/colors";
 
 // Tab bar styling
 ion-tab-bar {

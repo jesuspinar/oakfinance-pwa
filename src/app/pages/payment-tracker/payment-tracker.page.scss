@@ -3,30 +3,12 @@
 // Modern dark theme with transaction-focused design
 // =============================================================================
 
-// Color variables
-$oak-green: #5CB299;
-$oak-danger: #E57373;
-$oak-yellow: #E8C547;
-$oak-coral: #F5A9B8;
-$oak-bg-dark: #1A1A1A;
-$oak-bg-card: #252525;
-$oak-bg-elevated: #2D2D2D;
-$oak-bg-input: #333333;
-$oak-text-primary: #FFFFFF;
-$oak-text-secondary: #B3B3B3;
-$oak-text-muted: #808080;
+@import "theme/colors";
 
-// Spacing
-$spacing-xs: 4px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-$spacing-lg: 24px;
-$spacing-xl: 32px;
-
-// Border radius
-$radius-sm: 8px;
-$radius-md: 12px;
-$radius-lg: 16px;
+// Layout heights for FAB positioning
+$footer-height: 140px;  // Forecast footer approximate height
+$tab-bar-height: 60px;  // Tab bar height
+$fab-offset: $footer-height + $tab-bar-height;
 
 // =============================================================================
 // SUMMARY CARD - Hero style with gradient
@@ -378,7 +360,7 @@ ion-item-options {
 // =============================================================================
 
 ion-fab {
-  margin-bottom: 200px; // Footer height + tabs height
+  margin-bottom: $fab-offset;
   
   ion-fab-button {
     --background: #{$oak-green};
