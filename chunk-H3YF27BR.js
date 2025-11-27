@@ -1,0 +1,1 @@
+import{F as a,K as n,Pb as s}from"./chunk-32E675WK.js";var p=(()=>{let t=class t{constructor(r){this.translationService=r}transform(r,e){return this.translationService.translate(r,e)}};t.\u0275fac=function(e){return new(e||t)(a(s,16))},t.\u0275pipe=n({name:"translate",type:t,pure:!1});let i=t;return i})();export{p as a};
