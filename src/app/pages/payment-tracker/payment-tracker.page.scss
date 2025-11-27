@@ -1,0 +1,176 @@
+.summary-card {
+  margin: 16px;
+}
+
+.summary-item {
+  text-align: center;
+
+  p {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
+.income-text {
+  color: var(--ion-color-success);
+}
+
+.expense-text {
+  color: var(--ion-color-danger);
+}
+
+.clickable-badge {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.completed-item {
+  opacity: 0.5;
+  
+  ion-label h2,
+  ion-label p {
+    text-decoration: line-through;
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+
+  ion-icon {
+    font-size: 80px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 8px 0;
+  }
+
+  ion-text p {
+    font-size: 14px;
+    margin: 4px 0;
+  }
+}
+
+.forecast-footer {
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-card {
+  margin: 0;
+  box-shadow: none;
+}
+
+.balance-input-wrapper {
+  .balance-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--ion-color-medium);
+    margin-bottom: 8px;
+  }
+
+  .balance-input-container {
+    display: flex;
+    align-items: center;
+    background: var(--ion-color-light);
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    &:focus-within {
+      border-color: var(--ion-color-primary);
+      box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.2);
+      background: var(--ion-background-color);
+    }
+
+    .currency-prefix {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ion-color-primary);
+      margin-right: 8px;
+    }
+
+    .balance-input {
+      flex: 1;
+      font-size: 20px;
+      font-weight: 600;
+      --padding-start: 0;
+      --padding-end: 0;
+      --padding-top: 0;
+      --padding-bottom: 0;
+      --background: transparent;
+
+      &::part(native) {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.forecast-display {
+  text-align: center;
+
+  .forecast-label {
+    margin: 0 0 4px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .forecast-amount {
+    margin: 4px 0;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .forecast-details {
+    margin: 4px 0 0 0;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    ion-icon {
+      font-size: 14px;
+      margin-right: 2px;
+    }
+  }
+}
+
+.success-text {
+  color: var(--ion-color-success);
+}
+
+.warning-text {
+  color: var(--ion-color-warning);
+}
+
+.danger-text {
+  color: var(--ion-color-danger);
+}
+
+// Position FAB above footer and tabs
+ion-fab {
+  margin-bottom: 200px; // Footer height (~150px) + tabs height (~50px)
+}

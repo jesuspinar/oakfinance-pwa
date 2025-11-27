@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ 'settings.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-list>
+    <ion-list-header>
+      <ion-label>{{ 'settings.title' | translate }}</ion-label>
+    </ion-list-header>
+
+    <ion-item button (click)="changeMonthStartDay()">
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label>
+        <h2>{{ 'settings.monthStartDay' | translate }}</h2>
+        <p>{{ 'settings.monthStartDay.desc' | translate:{ day: settings.monthStartDay } }}</p>
+      </ion-label>
+      <ion-note slot="end">{{ settings.monthStartDay }}</ion-note>
+    </ion-item>
+
+    <ion-item button (click)="changeCurrency()">
+      <ion-icon name="cash-outline" slot="start"></ion-icon>
+      <ion-label>
+        <h2>{{ 'settings.currency' | translate }}</h2>
+        <p>{{ settings.currency }}</p>
+      </ion-label>
+      <ion-note slot="end">{{ settings.currencySymbol }}</ion-note>
+    </ion-item>
+
+    <ion-item button (click)="changeLanguage()">
+      <ion-icon name="language-outline" slot="start"></ion-icon>
+      <ion-label>
+        <h2>{{ 'settings.language' | translate }}</h2>
+        <p>{{ ('language.' + settings.language) | translate }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>{{ 'settings.about' | translate }}</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+      <ion-label>
+        <h2>{{ 'settings.appName' | translate }}</h2>
+        <p>{{ 'settings.appDesc' | translate }}</p>
+      </ion-label>
+      <ion-note slot="end">{{ 'settings.version' | translate }}</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <div class="info-section ion-padding">
+    <ion-card>
+      <ion-card-content>
+        <ion-text color="medium">
+          <h3>{{ 'settings.howToUse' | translate }}</h3>
+          <ol>
+            <li [innerHTML]="'settings.step1' | translate"></li>
+            <li [innerHTML]="'settings.step2' | translate"></li>
+            <li [innerHTML]="'settings.step3' | translate"></li>
+            <li [innerHTML]="'settings.step4' | translate"></li>
+          </ol>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

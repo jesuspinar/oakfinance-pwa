@@ -1,0 +1,7 @@
+{
+  "name": "OakFinanceTemp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
