@@ -8,11 +8,11 @@
 
   <ion-list>
     <ion-list-header>
-      <ion-label>{{ 'settings.title' | translate }}</ion-label>
+      <ion-label color="primary">{{ 'settings.title' | translate }}</ion-label>
     </ion-list-header>
 
     <ion-item button (click)="changeMonthStartDay()">
-      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-icon color="primary" name="calendar-outline" slot="start"></ion-icon>
       <ion-label>
         <h2>{{ 'settings.monthStartDay' | translate }}</h2>
         <p>{{ 'settings.monthStartDay.desc' | translate:{ day: settings.monthStartDay } }}</p>
@@ -21,7 +21,7 @@
     </ion-item>
 
     <ion-item button (click)="changeCurrency()">
-      <ion-icon name="cash-outline" slot="start"></ion-icon>
+      <ion-icon color="primary"  name="cash-outline" slot="start"></ion-icon>
       <ion-label>
         <h2>{{ 'settings.currency' | translate }}</h2>
         <p>{{ settings.currency }}</p>
@@ -30,7 +30,7 @@
     </ion-item>
 
     <ion-item button (click)="changeLanguage()">
-      <ion-icon name="language-outline" slot="start"></ion-icon>
+      <ion-icon color="primary" name="language-outline" slot="start"></ion-icon>
       <ion-label>
         <h2>{{ 'settings.language' | translate }}</h2>
         <p>{{ ('language.' + settings.language) | translate }}</p>
@@ -38,7 +38,7 @@
     </ion-item>
 
      <ion-item button (click)="toggleQuickTheme()">
-      <ion-icon [name]="appliedTheme === 'light' ? 'moon' : 'sunny'" slot="start"></ion-icon>
+      <ion-icon color="primary" [name]="appliedTheme === 'light' ? 'moon' : 'sunny'" slot="start"></ion-icon>
       <ion-label>
         <h2>Quick Toggle</h2>
         <p>Currently using {{ appliedTheme }} theme</p>
@@ -48,16 +48,16 @@
 
   <ion-list>
     <ion-list-header>
-      <ion-label>{{ 'settings.about' | translate }}</ion-label>
+      <ion-label color="primary">{{ 'settings.about' | translate }}</ion-label>
     </ion-list-header>
 
     <ion-item>
-      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+      <ion-icon color="primary" name="information-circle-outline" slot="start"></ion-icon>
       <ion-label>
         <h2>{{ 'settings.appName' | translate }}</h2>
         <p>{{ 'settings.appDesc' | translate }}</p>
       </ion-label>
-      <ion-note slot="end">{{ 'settings.version' | translate }}</ion-note>
+      <ion-note slot="end" color="primary">{{ 'settings.version' | translate }}</ion-note>
     </ion-item>
   </ion-list>
 
