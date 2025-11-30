@@ -325,9 +325,7 @@ ion-header {
 
 ion-segment {
   --background: #{$dark-bg-input};
-  border-radius: $radius-md;
   padding: $spacing-xs;
-  margin: 0 $spacing-md;
 
   ion-segment-button {
     --background: transparent;
