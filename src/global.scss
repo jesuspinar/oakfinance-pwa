@@ -514,7 +514,7 @@ ion-footer {
 }
 
 /* =============================================================================
-   MODAL
+   MODAL * ALERT
    ============================================================================= */
 
 ion-modal {
@@ -542,6 +542,21 @@ ion-modal {
     ion-content {
       --background: #{$light-bg-light};
     }
+  }
+}
+
+ion-alert {
+  .alert-radio-label,
+  .alert-checkbox-label {
+    color:  #{$dark-text-primary} !important;
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+ .alert-radio-label,
+  .alert-checkbox-label {
+    color: #{$light-text-primary} !important;
   }
 }
 
