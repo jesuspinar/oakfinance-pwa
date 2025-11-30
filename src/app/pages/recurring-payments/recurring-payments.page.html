@@ -11,18 +11,17 @@
       <ion-label>{{ 'payments.income' | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
-
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <!-- Expenses List -->
-  @if( selectedSegment === 'expense'){
-  @if(expensePayments.length > 0){
+  @if (selectedSegment === 'expense') {
+  @if (expensePayments.length > 0) {
   <ion-list>
-    <ion-item-sliding *ngFor="let payment of expensePayments">
+    @for (payment of expensePayments; track payment.id) {
+    <ion-item-sliding>
       <ion-item>
-        <ion-icon [name]="payment.iconName" slot="start" color="danger">
-        </ion-icon>
+        <ion-icon [name]="payment.iconName" slot="start" color="danger"></ion-icon>
         <ion-label>
           <h2>{{ payment.name }}</h2>
           <p>{{ 'payments.dayOfMonth' | translate:{ day: payment.dayOfMonth } }}</p>
@@ -40,9 +39,9 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    }
   </ion-list>
-  }
-  @else{
+  } @else {
   <div class="empty-state">
     <ion-icon name="wallet-outline" color="medium"></ion-icon>
     <p>{{ 'payments.noExpenses' | translate }}</p>
@@ -54,13 +53,13 @@
   }
 
   <!-- Income List -->
-  @if(selectedSegment === 'income'){
-  @if(incomePayments.length > 0){
+  @if (selectedSegment === 'income') {
+  @if (incomePayments.length > 0) {
   <ion-list>
-    <ion-item-sliding *ngFor="let payment of incomePayments">
+    @for (payment of incomePayments; track payment.id) {
+    <ion-item-sliding>
       <ion-item>
-        <ion-icon [name]="payment.iconName" slot="start" color="success">
-        </ion-icon>
+        <ion-icon [name]="payment.iconName" slot="start" color="success"></ion-icon>
         <ion-label>
           <h2>{{ payment.name }}</h2>
           <p>{{ 'payments.dayOfMonth' | translate:{ day: payment.dayOfMonth } }}</p>
@@ -79,8 +78,9 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    }
   </ion-list>
-  }@else {
+  } @else {
   <div class="empty-state">
     <ion-icon name="cash-outline" color="medium"></ion-icon>
     <p>{{ 'payments.noIncome' | translate }}</p>
@@ -97,5 +97,4 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 </ion-content>

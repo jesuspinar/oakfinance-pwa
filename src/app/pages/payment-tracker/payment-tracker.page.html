@@ -54,10 +54,11 @@
     <ion-list-header>
       <ion-label color="danger">{{ 'tracker.due' | translate }} ({{ groupedLogs.overdue.length }})</ion-label>
     </ion-list-header>
-    <ion-item-sliding *ngFor="let log of groupedLogs.overdue">
+
+    @for (log of groupedLogs.overdue; track log) {
+    <ion-item-sliding>
       <ion-item [class.completed-item]="log.isCompleted">
-        <ion-icon [name]="log.iconName" slot="start" [color]="log.type === 'income' ? 'success' : 'danger'">
-        </ion-icon>
+        <ion-icon [name]="log.iconName" slot="start" [color]="log.type === 'income' ? 'success' : 'danger'"></ion-icon>
         <ion-label>
           <h2>{{ log.name }}</h2>
           <p>Due: {{ log.dueDate | date:'MMM d' }}</p>
@@ -66,8 +67,7 @@
           class="clickable-badge">
           {{ log.amount | appCurrency }}
         </ion-badge>
-        <ion-checkbox slot="end" [checked]="log.isCompleted" (ionChange)="toggleCompleted(log)">
-        </ion-checkbox>
+        <ion-checkbox slot="end" [checked]="log.isCompleted" (ionChange)="toggleCompleted(log)"></ion-checkbox>
       </ion-item>
 
       <ion-item-options side="end">
@@ -76,9 +76,9 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    }
   </ion-list>
   }
-
 
   <!-- Upcoming -->
   @if(groupedLogs.upcoming.length > 0){
@@ -86,10 +86,11 @@
     <ion-list-header>
       <ion-label>{{ 'tracker.pending' | translate }} ({{ groupedLogs.upcoming.length }})</ion-label>
     </ion-list-header>
-    <ion-item-sliding *ngFor="let log of groupedLogs.upcoming">
+
+    @for (log of groupedLogs.upcoming; track log) {
+    <ion-item-sliding>
       <ion-item [class.completed-item]="log.isCompleted">
-        <ion-icon [name]="log.iconName" slot="start" [color]="log.type === 'income' ? 'success' : 'danger'">
-        </ion-icon>
+        <ion-icon [name]="log.iconName" slot="start" [color]="log.type === 'income' ? 'success' : 'danger'"></ion-icon>
         <ion-label>
           <h2>{{ log.name }}</h2>
           <p>Due: {{ log.dueDate | date:'MMM d' }}</p>
@@ -98,8 +99,7 @@
           class="clickable-badge">
           {{ log.amount | appCurrency }}
         </ion-badge>
-        <ion-checkbox slot="end" [checked]="log.isCompleted" (ionChange)="toggleCompleted(log)">
-        </ion-checkbox>
+        <ion-checkbox slot="end" [checked]="log.isCompleted" (ionChange)="toggleCompleted(log)"></ion-checkbox>
       </ion-item>
 
       <ion-item-options side="end">
@@ -108,6 +108,7 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    }
   </ion-list>
   }
 
@@ -116,10 +117,11 @@
     <ion-list-header>
       <ion-label color="success">{{ 'tracker.completed' | translate }} ({{ groupedLogs.completed.length }})</ion-label>
     </ion-list-header>
-    <ion-item-sliding *ngFor="let log of groupedLogs.completed">
+
+    @for (log of groupedLogs.completed; track log) {
+    <ion-item-sliding>
       <ion-item class="completed-item">
-        <ion-icon [name]="log.iconName" slot="start" [color]="log.type === 'income' ? 'success' : 'danger'">
-        </ion-icon>
+        <ion-icon [name]="log.iconName" slot="start" [color]="log.type === 'income' ? 'success' : 'danger'"></ion-icon>
         <ion-label>
           <h2>{{ log.name }}</h2>
           <p>Completed: {{ log.completedDate | date:'MMM d' }}</p>
@@ -128,8 +130,7 @@
           class="clickable-badge">
           {{ log.amount | appCurrency }}
         </ion-badge>
-        <ion-checkbox slot="end" [checked]="log.isCompleted" (ionChange)="toggleCompleted(log)">
-        </ion-checkbox>
+        <ion-checkbox slot="end" [checked]="log.isCompleted" (ionChange)="toggleCompleted(log)"></ion-checkbox>
       </ion-item>
 
       <ion-item-options side="end">
@@ -138,8 +139,10 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    }
   </ion-list>
   }
+
   <!-- Empty -->
   @if( allLogs.length === 0){
   <div class="empty-state">
