@@ -7,6 +7,7 @@ import { TranslationService } from '../../services/translation.service';
 import { AppSettings, Language } from '../../models';
 import { CURRENCIES } from '../../constants/currencies';
 import { TranslatePipe } from '../../pipes/translate.pipe';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-settings',
@@ -17,6 +18,8 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 })
 export class Settings implements OnInit {
   Language = Language;
+
+  appliedTheme: 'light' | 'dark' = 'dark';
 
   settings: AppSettings = {
     monthStartDay: 1,
@@ -37,11 +40,20 @@ export class Settings implements OnInit {
   constructor(
     private settingsService: SettingsService,
     private translationService: TranslationService,
-    private alertCtrl: AlertController
-  ) {}
+    private alertCtrl: AlertController,
+    private themeService: ThemeService
+  ) { }
 
   async ngOnInit() {
     await this.loadSettings();
+    this.appliedTheme = this.themeService.getAppliedTheme();
+    this.themeService.theme$.subscribe(() => {
+      this.appliedTheme = this.themeService.getAppliedTheme();
+    });
+  }
+
+  toggleQuickTheme() {
+    this.themeService.toggleTheme();
   }
 
   async ionViewWillEnter() {

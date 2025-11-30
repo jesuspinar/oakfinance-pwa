@@ -1,51 +1,42 @@
 /*
- * App Global CSS
+ * App Global CSS - SCSS with Theme Support
  * ----------------------------------------------------------------------------
- * OakFinance PWA - Modern Dark Theme
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * OakFinance PWA - Light & Dark Theme Support using SCSS Variables
  */
 
-// Import theme modules using @use
 @use "theme/variables" as *;
+
 /* Core CSS required for Ionic components to work properly */
 @use "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @use "@ionic/angular/css/normalize.css";
 @use "@ionic/angular/css/structure.css";
 @use "@ionic/angular/css/typography.css";
 @use "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* Optional CSS utils */
 @use "@ionic/angular/css/padding.css";
 @use "@ionic/angular/css/float-elements.css";
 @use "@ionic/angular/css/text-alignment.css";
 @use "@ionic/angular/css/text-transformation.css";
 @use "@ionic/angular/css/flex-utils.css";
 
-/* Dark Mode - Always enabled for modern look */
-@use "@ionic/angular/css/palettes/dark.always.css";
-
 /* =============================================================================
    OAKFINANCE CUSTOM GLOBAL STYLES
    ============================================================================= */
 
-
-
-// Typography variables
-$font-family-base: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-
 /* =============================================================================
-   BASE STYLES
+   BASE STYLES - DARK THEME (DEFAULT)
    ============================================================================= */
 
 ion-content {
-  --background: #{$oak-bg-dark};
+  --background: #{$dark-bg-dark};
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-content {
+    --background: #{$light-bg-light};
+  }
 }
 
 /* =============================================================================
@@ -54,11 +45,22 @@ ion-content {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: $font-weight-semibold;
-  color: $oak-text-primary;
+  color: $dark-text-primary;
 }
 
 p {
-  color: $oak-text-secondary;
+  color: $dark-text-secondary;
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  h1, h2, h3, h4, h5, h6 {
+    color: $light-text-primary;
+  }
+
+  p {
+    color: $light-text-secondary;
+  }
 }
 
 /* =============================================================================
@@ -66,7 +68,7 @@ p {
    ============================================================================= */
 
 ion-card {
-  --background: #{$oak-bg-card};
+  --background: #{$dark-bg-card};
   border-radius: $radius-lg;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   margin: $spacing-md;
@@ -82,20 +84,44 @@ ion-card {
   ion-card-title {
     font-size: 1.25rem;
     font-weight: $font-weight-semibold;
-    color: $oak-text-primary;
+    color: $dark-text-primary;
   }
 
   ion-card-subtitle {
     font-size: 0.875rem;
-    color: $oak-text-secondary;
+    color: $dark-text-secondary;
     margin-top: $spacing-xs;
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-card {
+    --background: #{$light-bg-card};
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+    ion-card-title {
+      color: $light-text-primary;
+    }
+
+    ion-card-subtitle {
+      color: $light-text-secondary;
+    }
   }
 }
 
 /* Modern summary/stats card style */
 .oak-stats-card {
-  background: linear-gradient(145deg, $oak-bg-card 0%, $oak-bg-card-darker 100%);
+  background: linear-gradient(145deg, $dark-bg-card 0%, $dark-bg-card-darker 100%);
   border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  .oak-stats-card {
+    background: linear-gradient(145deg, $light-bg-card 0%, $light-bg-card-darker 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
 }
 
 /* =============================================================================
@@ -112,14 +138,21 @@ ion-list {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: $spacing-md $spacing-md $spacing-sm;
-    color: $oak-text-muted;
+    color: $dark-text-muted;
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-list ion-list-header {
+    color: $light-text-muted;
   }
 }
 
 ion-item {
-  --background: #{$oak-bg-card};
-  --background-hover: #{$oak-bg-elevated};
-  --background-activated: #{$oak-bg-elevated};
+  --background: #{$dark-bg-card};
+  --background-hover: #{$dark-bg-elevated};
+  --background-activated: #{$dark-bg-elevated};
   --border-color: transparent;
   --inner-border-width: 0;
   --padding-start: #{$spacing-md};
@@ -132,13 +165,13 @@ ion-item {
     h2 {
       font-weight: $font-weight-medium;
       font-size: 1rem;
-      color: $oak-text-primary;
+      color: $dark-text-primary;
       margin-bottom: 2px;
     }
 
     p {
       font-size: 0.8125rem;
-      color: $oak-text-secondary;
+      color: $dark-text-secondary;
     }
   }
 
@@ -148,6 +181,29 @@ ion-item {
     padding: $spacing-sm;
     border-radius: $radius-sm;
     background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-item {
+    --background: #{$light-bg-card};
+    --background-hover: #{$light-bg-elevated};
+    --background-activated: #{$light-bg-elevated};
+
+    ion-label {
+      h2 {
+        color: $light-text-primary;
+      }
+
+      p {
+        color: $light-text-secondary;
+      }
+    }
+
+    ion-icon[slot="start"] {
+      background: rgba(0, 0, 0, 0.05);
+    }
   }
 }
 
@@ -183,17 +239,17 @@ ion-badge {
 
   &[color="success"] {
     background: rgba($oak-green, 0.15);
-    color: $oak-green;
+    color: $dark-success;
   }
 
   &[color="danger"] {
-    background: rgba($oak-danger, 0.15);
-    color: $oak-danger;
+    background: rgba(229, 115, 115, 0.15);
+    color: $dark-danger;
   }
 
   &[color="warning"] {
     background: rgba($oak-yellow, 0.15);
-    color: $oak-yellow;
+    color: $dark-warning;
   }
 
   &[color="primary"] {
@@ -202,20 +258,44 @@ ion-badge {
   }
 }
 
+:root[data-theme="light"],
+:root.light-theme {
+  ion-badge {
+    &[color="success"] {
+      color: $light-success;
+    }
+
+    &[color="danger"] {
+      color: $light-danger;
+    }
+
+    &[color="warning"] {
+      color: $light-warning;
+    }
+  }
+}
+
 /* =============================================================================
    TOOLBAR & HEADER
    ============================================================================= */
 
 ion-toolbar {
-  --background: #{$oak-bg-dark};
+  --background: #{$dark-bg-dark};
   --border-width: 0;
-  --padding-top: $spacing-sm;
-  --padding-bottom: $spacing-sm;
+  --padding-top: #{$spacing-sm};
+  --padding-bottom: #{$spacing-sm};
 
   ion-title {
     font-weight: $font-weight-semibold;
     font-size: 1.125rem;
     letter-spacing: -0.25px;
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-toolbar {
+    --background: #{$light-bg-card};
   }
 }
 
@@ -230,7 +310,7 @@ ion-header {
    ============================================================================= */
 
 ion-segment {
-  --background: #{$oak-bg-input};
+  --background: #{$dark-bg-input};
   border-radius: $radius-md;
   padding: $spacing-xs;
   margin: 0 $spacing-md;
@@ -238,7 +318,7 @@ ion-segment {
   ion-segment-button {
     --background: transparent;
     --background-checked: #{$oak-green};
-    --color: #{$oak-text-secondary};
+    --color: #{$dark-text-secondary};
     --color-checked: #000000;
     --indicator-color: transparent;
     --border-radius: #{$radius-sm};
@@ -256,19 +336,30 @@ ion-segment {
   }
 }
 
+:root[data-theme="light"],
+:root.light-theme {
+  ion-segment {
+    --background: #{$light-bg-input};
+
+    ion-segment-button {
+      --color: #{$light-text-secondary};
+    }
+  }
+}
+
 /* =============================================================================
    TAB BAR
    ============================================================================= */
 
 ion-tab-bar {
-  --background: #{$oak-bg-card};
+  --background: #{$dark-bg-card};
   --border: none;
   height: 60px;
   padding-bottom: env(safe-area-inset-bottom);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
 
   ion-tab-button {
-    --color: #{$oak-text-muted};
+    --color: #{$dark-text-muted};
     --color-selected: #{$oak-green};
 
     ion-icon {
@@ -286,6 +377,18 @@ ion-tab-bar {
       ion-icon {
         transform: scale(1.1);
       }
+    }
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-tab-bar {
+    --background: #{$light-bg-card};
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+
+    ion-tab-button {
+      --color: #{$light-text-muted};
     }
   }
 }
@@ -310,12 +413,19 @@ ion-button {
 /* FAB Button */
 ion-fab-button {
   --background: #{$oak-green};
-  --background-activated: #{$oak-green-activated};
+  --background-activated: #{$dark-green-activated};
   --color: #000000;
-  --box-shadow: 0 4px 16px rgba($oak-green, 0.4);
+  --box-shadow: 0 4px 16px rgba(92, 178, 153, 0.4);
 
   &:hover {
-    --box-shadow: 0 6px 20px rgba($oak-green, 0.5);
+    --box-shadow: 0 6px 20px rgba(92, 178, 153, 0.5);
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-fab-button {
+    --background-activated: #{$light-green-activated};
   }
 }
 
@@ -324,22 +434,39 @@ ion-fab-button {
    ============================================================================= */
 
 ion-input, ion-textarea, ion-select {
-  --background: #{$oak-bg-input};
-  --color: #{$oak-text-primary};
-  --placeholder-color: #{$oak-text-muted};
+  --background: #{$dark-bg-input};
+  --color: #{$dark-text-primary};
+  --placeholder-color: #{$dark-text-muted};
   --padding-start: #{$spacing-md};
   --padding-end: #{$spacing-md};
   border-radius: $radius-md;
 }
 
+:root[data-theme="light"],
+:root.light-theme {
+  ion-input, ion-textarea, ion-select {
+    --background: #{$light-bg-input};
+    --color: #{$light-text-primary};
+    --placeholder-color: #{$light-text-muted};
+  }
+}
+
 ion-checkbox {
-  --background: #{$oak-bg-input};
+  --background: #{$dark-bg-input};
   --background-checked: #{$oak-green};
-  --border-color: #{$oak-bg-elevated};
+  --border-color: #{$dark-bg-elevated};
   --border-color-checked: #{$oak-green};
   --checkmark-color: #000000;
   --size: 22px;
   --border-radius: 6px;
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-checkbox {
+    --background: #{$light-bg-input};
+    --border-color: #{$light-bg-elevated};
+  }
 }
 
 /* =============================================================================
@@ -347,7 +474,7 @@ ion-checkbox {
    ============================================================================= */
 
 ion-footer {
-  background: $oak-bg-card;
+  background: $dark-bg-card;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
 
   &::before {
@@ -359,20 +486,43 @@ ion-footer {
   }
 }
 
+:root[data-theme="light"],
+:root.light-theme {
+  ion-footer {
+    background: $light-bg-card;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
 /* =============================================================================
    MODAL
    ============================================================================= */
 
 ion-modal {
-  --background: #{$oak-bg-dark};
+  --background: #{$dark-bg-dark};
   --border-radius: #{$radius-xl} #{$radius-xl} 0 0;
 
   ion-toolbar {
-    --background: #{$oak-bg-dark};
+    --background: #{$dark-bg-dark};
   }
 
   ion-content {
-    --background: #{$oak-bg-dark};
+    --background: #{$dark-bg-dark};
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  ion-modal {
+    --background: #{$light-bg-card};
+
+    ion-toolbar {
+      --background: #{$light-bg-card};
+    }
+
+    ion-content {
+      --background: #{$light-bg-light};
+    }
   }
 }
 
@@ -385,12 +535,12 @@ ion-modal {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: $spacing-xl * 2 $spacing-lg;
+  padding: calc(#{$spacing-xl} * 2) $spacing-lg;
   text-align: center;
 
   ion-icon {
     font-size: 80px;
-    color: $oak-text-muted;
+    color: $dark-text-muted;
     margin-bottom: $spacing-lg;
     opacity: 0.5;
   }
@@ -398,14 +548,31 @@ ion-modal {
   p {
     font-size: 1.125rem;
     font-weight: $font-weight-medium;
-    color: $oak-text-primary;
+    color: $dark-text-primary;
     margin: $spacing-sm 0;
   }
 
   ion-text p {
     font-size: 0.875rem;
-    color: $oak-text-secondary;
+    color: $dark-text-secondary;
     margin: $spacing-xs 0;
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  .empty-state {
+    ion-icon {
+      color: $light-text-muted;
+    }
+
+    p {
+      color: $light-text-primary;
+    }
+
+    ion-text p {
+      color: $light-text-secondary;
+    }
   }
 }
 
@@ -414,36 +581,70 @@ ion-modal {
    ============================================================================= */
 
 .text-success {
-  color: $oak-green !important;
+  color: $dark-success !important;
 }
 
 .text-danger {
-  color: $oak-danger !important;
+  color: $dark-danger !important;
 }
 
 .text-warning {
-  color: $oak-yellow !important;
+  color: $dark-warning !important;
 }
 
 .text-muted {
-  color: $oak-text-muted !important;
+  color: $dark-text-muted !important;
 }
 
 .text-secondary {
-  color: $oak-text-secondary !important;
+  color: $dark-text-secondary !important;
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  .text-success {
+    color: $light-success !important;
+  }
+
+  .text-danger {
+    color: $light-danger !important;
+  }
+
+  .text-warning {
+    color: $light-warning !important;
+  }
+
+  .text-muted {
+    color: $light-text-muted !important;
+  }
+
+  .text-secondary {
+    color: $light-text-secondary !important;
+  }
 }
 
 .bg-card {
-  background: $oak-bg-card !important;
+  background: $dark-bg-card !important;
 }
 
 .bg-elevated {
-  background: $oak-bg-elevated !important;
+  background: $dark-bg-elevated !important;
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  .bg-card {
+    background: $light-bg-card !important;
+  }
+
+  .bg-elevated {
+    background: $light-bg-elevated !important;
+  }
 }
 
 /* Currency/Amount display helpers */
 .amount-positive {
-  color: $oak-green;
+  color: $dark-success;
   font-weight: $font-weight-semibold;
 
   &::before {
@@ -452,11 +653,22 @@ ion-modal {
 }
 
 .amount-negative {
-  color: $oak-danger;
+  color: $dark-danger;
   font-weight: $font-weight-semibold;
 
   &::before {
     content: '-';
+  }
+}
+
+:root[data-theme="light"],
+:root.light-theme {
+  .amount-positive {
+    color: $light-success;
+  }
+
+  .amount-negative {
+    color: $light-danger;
   }
 }
 
